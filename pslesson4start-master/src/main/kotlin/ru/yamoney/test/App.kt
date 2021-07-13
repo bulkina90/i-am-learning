@@ -24,7 +24,8 @@ fun main(args: Array<String>) {
                 Deposit(BigDecimal(args[2]), args[1]))
             "BALANCE" -> billing.getUserBalance(args[1])
             "SHOP_INFO" -> billing.getShopIdOperations(args[1])
-            "P2P_TRANSFER" -> "" //billing.addOperation()
+            "P2P_TRANSFER" -> billing.addOperation(
+                P2PTransfer(BigDecimal(args[3]), args[1], args[2]))
             else -> throw IllegalArgumentException("Unknown command")
         }
 

@@ -21,7 +21,7 @@ class BillingImpl: Billing {
         var userBalance = BigDecimal.ZERO
         file.readLines()
                 .map {it.toOperation()}
-                .filter { it.user == user }
+                .filter { it.toString().contains(user) }
                 .forEach{
                     userBalance = it.calculate(userBalance)
                 }

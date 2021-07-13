@@ -21,17 +21,18 @@ const val USAGE_MESSAGE ="""
 
     @Test
     fun payment() {
-        main(arrayOf("payment", "Вася", "23", "4454"))
+        main(arrayOf("payment", "Петя", "3", "4454"))
     }
 
     @Test
     fun deposit() {
-        main(arrayOf("deposit", "Вася", "123", "4454"))
+        main(arrayOf("deposit", "Петя", "11", "4454"))
     }
 
     @Test
     fun balance() {
-        main(arrayOf("balance", "Вася"))
+        //main(arrayOf("balance", "Вася"))
+        main(arrayOf("balance", "Петя"))
     }
 
     @Test
@@ -41,6 +42,6 @@ const val USAGE_MESSAGE ="""
 
      @Test
      fun p2pTransfer() {
-         main(arrayOf("p2p_transfer", "вася", "петя", "5"))
+         main(arrayOf("p2p_transfer", "Вася", "Петя", "5"))
      }
 }

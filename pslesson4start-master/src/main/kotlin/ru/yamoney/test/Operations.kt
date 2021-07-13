@@ -16,6 +16,23 @@ data class Deposit(
     }
 }
 
+data class P2PTransfer(
+    override val sum: BigDecimal,
+    override val user: String,
+    val recipient: String
+) : Operation {
+    override fun calculate(oldBalance: BigDecimal): BigDecimal {
+        var Balance = oldBalance
+        if (this.user == user) {
+            Balance -= sum
+        }   else if (this.user == recipient){
+            Balance += sum
+        }
+        return Balance
+    }
+
+}
+
 data class Payment(
     override val sum: BigDecimal,
     override val user: String,
@@ -25,27 +42,7 @@ data class Payment(
         return oldBalance.minus(sum)
     }
 
-data class P2PTransfer(
-    override val sum: BigDecimal,
-    override val user: String,
-    val recipient: String
-    ) : Operation {
 
-    override fun calculate(oldBalance: BigDecimal): BigDecimal {
-
-        return oldBalance
-
-    }
-    // нужно сделать как-то так, если в файле для операции он стоит как пользовтаель то отнимает, если ресипиент, то получает.Но пока
-    // не понимаю как это реализовать внутри объявления класса
-    fun p2p_calculate(oldBalance: BigDecimal, currentUser: String): BigDecimal {
-        if (currentUser == user) {
-            return oldBalance.minus(sum)
-        }
-        return oldBalance.plus(sum)
-    }
-
-}
 }
 
 
